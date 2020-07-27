@@ -1,15 +1,25 @@
+```sql
+CREATE TABLE es_table (
+  id BIGINT(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY unique_id (id),
+  client_name VARCHAR(32) NOT NULL,
+  modification_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  insertion_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
 ## Starting logstash 
 
 Starting logstash input jdbc
 
 ```bash
-docker-compose -f compose/db-platform/docker-compose.version.yaml -p project_name up --build
+docker-compose -f compose/mysql/docker-compose.mysql-5.7.yaml -p prj up --build
 ```
 
 Stoping all service
 
 ```bash
-docker-compose -f compose/db-platform/docker-compose.version.yaml -p project_name down --rmi local
+docker-compose -f compose/mysql/docker-compose.mysql-5.7.yaml -p prj down --rmi local
 ```
 
 ## Customize configuration
