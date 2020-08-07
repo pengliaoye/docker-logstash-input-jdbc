@@ -1,11 +1,12 @@
 ```sql
-CREATE TABLE es_table (
-  id BIGINT(20) UNSIGNED NOT NULL,
-  PRIMARY KEY (id),
-  UNIQUE KEY unique_id (id),
-  client_name VARCHAR(32) NOT NULL,
-  modification_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  insertion_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE `content_news` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(1000) DEFAULT NULL COMMENT '标题',
+  `content` varchar(5000)  DEFAULT NULL COMMENT '内容',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_deleted` tinyint(255) unsigned DEFAULT NULL COMMENT '1 是  0 否',
+  PRIMARY KEY (`id`)
 );
 ```
 ## Starting logstash 
