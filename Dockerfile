@@ -1,10 +1,10 @@
-FROM docker.elastic.co/logstash/logstash:7.3.2
+FROM docker.elastic.co/logstash/logstash:7.10.1
 MAINTAINER <software.dimas_m@icloud.com> Dimas Maryanto
 
 # install dependency
-RUN /usr/share/logstash/bin/logstash-plugin install logstash-input-jdbc
+#RUN /usr/share/logstash/bin/logstash-plugin install logstash-input-jdbc
 RUN /usr/share/logstash/bin/logstash-plugin install logstash-filter-aggregate
-RUN /usr/share/logstash/bin/logstash-plugin install logstash-filter-jdbc_streaming
+#RUN /usr/share/logstash/bin/logstash-plugin install logstash-filter-jdbc_streaming
 RUN /usr/share/logstash/bin/logstash-plugin install logstash-filter-mutate
 
 # copy lib database jdbc jars
