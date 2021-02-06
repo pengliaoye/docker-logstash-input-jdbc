@@ -1,5 +1,5 @@
 ```sql
-CREATE TABLE `content_news` (
+CREATE TABLE `article` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(1000) DEFAULT NULL COMMENT '标题',
   `content` varchar(5000)  DEFAULT NULL COMMENT '内容',
@@ -8,6 +8,26 @@ CREATE TABLE `content_news` (
   `is_deleted` tinyint(255) unsigned DEFAULT NULL COMMENT '1 是  0 否',
   PRIMARY KEY (`id`)
 );
+
+
+CREATE TABLE `article_tags` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `article_id` bigint(20) unsigned NOT NULL,
+  `tag_name` varchar(5000)  DEFAULT NULL COMMENT '标签名称',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_deleted` tinyint(255) unsigned DEFAULT NULL COMMENT '1 是  0 否',
+  PRIMARY KEY (`id`)
+);
+
+
+update article_tags set tag_name='chongqing' where id = 1;
+update article_tags set tag_name='covid19' where id = 2;
+update article set content = 'hello world!' where id = 1;
+
+insert into article(id, title, content) values('1', 'hello world!');
+insert into article_tags(id, article_id, tag_name) values(1, 1, 'chongqing');
+insert into article_tags(id, article_id, tag_name) values(2, 1, 'covid19');
 ```
 ## Starting logstash 
 
